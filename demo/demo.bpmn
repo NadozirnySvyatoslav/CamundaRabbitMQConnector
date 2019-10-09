@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0q763u9" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.3.5">
+  <bpmn:process id="Process_04obzwi" isExecutable="true">
+    <bpmn:sequenceFlow id="SequenceFlow_0wgbofo" sourceRef="StartEvent_1" targetRef="Task_16z26nb" />
+    <bpmn:serviceTask id="Task_16z26nb" name="Test RMQ Connector">
+      <bpmn:extensionElements>
+        <camunda:connector>
+          <camunda:inputOutput>
+            <camunda:inputParameter name="url">amqp://localhost/%2F</camunda:inputParameter>
+            <camunda:inputParameter name="queue">test124</camunda:inputParameter>
+            <camunda:inputParameter name="message">TEST from Camunda</camunda:inputParameter>
+            <camunda:inputParameter name="routingKey">test124</camunda:inputParameter>
+          </camunda:inputOutput>
+          <camunda:connectorId>rabbitmq</camunda:connectorId>
+        </camunda:connector>
+      </bpmn:extensionElements>
+      <bpmn:incoming>SequenceFlow_0wgbofo</bpmn:incoming>
+      <bpmn:outgoing>SequenceFlow_0ek7p08</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="EndEvent_0vwmeix">
+      <bpmn:incoming>SequenceFlow_0ek7p08</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="SequenceFlow_0ek7p08" sourceRef="Task_16z26nb" targetRef="EndEvent_0vwmeix" />
+    <bpmn:startEvent id="StartEvent_1">
+      <bpmn:outgoing>SequenceFlow_0wgbofo</bpmn:outgoing>
+      <bpmn:messageEventDefinition messageRef="Message_0qmva5f" />
+    </bpmn:startEvent>
+  </bpmn:process>
+  <bpmn:message id="Message_0qmva5f" name="SendToRabbit" />
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_04obzwi">
+      <bpmndi:BPMNEdge id="SequenceFlow_0wgbofo_di" bpmnElement="SequenceFlow_0wgbofo">
+        <di:waypoint x="188" y="120" />
+        <di:waypoint x="260" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ServiceTask_06xzsqp_di" bpmnElement="Task_16z26nb">
+        <dc:Bounds x="260" y="80" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="EndEvent_0vwmeix_di" bpmnElement="EndEvent_0vwmeix">
+        <dc:Bounds x="422" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0ek7p08_di" bpmnElement="SequenceFlow_0ek7p08">
+        <di:waypoint x="360" y="120" />
+        <di:waypoint x="422" y="120" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_0usipmq_di" bpmnElement="StartEvent_1">
+        <dc:Bounds x="152" y="102" width="36" height="36" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
