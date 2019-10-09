@@ -31,7 +31,6 @@ public class Send
     Connection connection = factory.newConnection(); 
     Channel channel = connection.createChannel();
     
-
     String message = "";
     channel.queueDeclareNoWait(QUEUE_NAME, true, false, false, null);
     channel.queuePurge(QUEUE_NAME);

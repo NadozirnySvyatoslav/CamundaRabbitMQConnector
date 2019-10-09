@@ -26,11 +26,6 @@ public class Receiver {
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
             System.out.println(" [x] Received '" + message + "'");
-	    try{
-	    channel.close();
-	    connection.close();
-	    }catch(Exception e){
-	    }
         } ;
         channel.basicConsume(QUEUE_NAME, true, deliverCallback, consumerTag -> {});
     }
