@@ -1,2 +1,2 @@
-# CamundaRabbitMQConnector
+# Camunda RabbitMQ Connector
 
