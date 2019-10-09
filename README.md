@@ -57,10 +57,9 @@ Deploy BPMN, might be used from demo/demo.bpmn
 
 ### Test connector
 
+1. Run listener (look Receiving message from RabbitMQ) or RabbitMQ Control Panel
 
-2. Run listener (look Receiving message from RabbitMQ) or RabbitMQ Control Panel
-
-3. Trigger message
+2. Trigger message
 ```
 #!/bin/sh
 
@@ -72,7 +71,7 @@ echo [x] $UUID
 curl -H 'Content-Type: application/json' $url -d "$payload"
 ```
 
-4. Check listener and camunda logs
+3. Check listener and camunda logs
 ```
 09-Oct-2019 08:08:00.571 WARNING [http-nio-8080-exec-1] com.ktc.rabbitmq.RMQRequest.isRequestValid parameter 'exchange' was set to '' RMQRequest [url=amqp://localhost/%2F]
 09-Oct-2019 08:31:50.105 FINE [http-nio-8080-exec-1] com.ktc.rabbitmq.RMQInvocation.invokeTarget  [x] RMQ send 'TEST from Camunda'
@@ -80,19 +79,21 @@ curl -H 'Content-Type: application/json' $url -d "$payload"
 
 ## Configuration of "rabbitmq" Connector
 
-Input parameters for the connector:
+Input parameters for the connector () https://www.rabbitmq.com/tutorials/amqp-concepts.html :
 
-url - URI in format amqp://user:pass@host:port/virtualhost, mandatory
-exchange - name, default ""
-queue - name, mandatory
-routingKey - key name
-appId - application id
-deliveryMode - default=2
-contentType -
-contentEncoding -
-priority - default=1
-type -
-replyTo -
-correlationId -
-messageId -
-message - data to put in queue, mandatory
+* url - URI in format amqp://user:pass@host:port/virtualhost, mandatory detailed  https://www.rabbitmq.com/uri-spec.html
+* exchange - name, default ""
+* queue - name, mandatory
+* routingKey - key name
+* appId - application id
+* deliveryMode - default=2
+* contentType -
+* contentEncoding -
+* priority - default=1
+* type -
+* replyTo -
+* correlationId -
+* messageId -
+* message - data to put in queue, mandatory
+
+For detailed information look https://www.rabbitmq.com/tutorials/amqp-concepts.html
