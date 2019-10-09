@@ -2,3 +2,4 @@
 /run_receiver.sh
 /target
 /target/*
+!/target/rabbitmq-connector-1.0-SNAPSHOT.jar
