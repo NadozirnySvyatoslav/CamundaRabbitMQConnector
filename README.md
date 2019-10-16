@@ -51,7 +51,8 @@ com.ktc.rabbitmq.maxDays = 90
 ```
 
 Line "Discovered provider for connector id 'rabbitmq' and class 'com.ktc.rabbitmq.RMQConnector': 'com.ktc.rabbitmq.RMQConnectorProvider'" should be present without errors
-Deploy BPMN, might be used from demo/demo.bpmn
+
+5. Deploy BPMN, might be used from demo/demo.bpmn
 
 ![BPMN process](/demo/demo_bpmn.png)
 

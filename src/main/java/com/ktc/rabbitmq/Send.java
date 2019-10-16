@@ -32,8 +32,8 @@ public class Send
     Channel channel = connection.createChannel();
     
     String message = "";
-    channel.queueDeclareNoWait(QUEUE_NAME, true, false, false, null);
-    channel.queuePurge(QUEUE_NAME);
+//    channel.queueDeclare(QUEUE_NAME, true, false, false, null);
+
     BufferedReader in = null;
     try {
         in = new BufferedReader(new InputStreamReader(System.in));
@@ -51,9 +51,12 @@ public class Send
         }
     }
     channel.basicPublish("", QUEUE_NAME, new AMQP.BasicProperties.Builder()
-               .contentType("text/plain")
+               .contentType("application/json")
+	       .contentEncoding("UTF-8")
                .deliveryMode(2)
                .priority(1)
+	       .type("bpmn-test")
+		.appId("yt11")
                .build(), message.getBytes("UTF-8"));
     System.out.println(" [x] Sent:\n" + message +"\n");
     channel.close();

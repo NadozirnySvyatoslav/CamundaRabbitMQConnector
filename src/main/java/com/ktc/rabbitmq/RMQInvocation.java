@@ -22,7 +22,6 @@ public class RMQInvocation extends AbstractRequestInvocation<RMQRequest> {
     factory.setUri(request.getUrl());
     Connection connection = factory.newConnection();
     Channel channel = connection.createChannel();
-    channel.queueDeclare(request.getQueue(), true, false, false, null);
     channel.basicPublish(request.getExchange(), 
 			request.getRoutingKey(), 
 			request.getProperties(),
