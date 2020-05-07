@@ -23,6 +23,10 @@ public class RMQRequest extends AbstractConnectorRequest<RMQEmptyResponse> {
     return getRequestParameter("url");
   }
 
+ public String getSync() {
+    return getRequestParameter("sync");
+  }
+
  public String getMessage() {
     return getRequestParameter("message");
   }
@@ -73,6 +77,11 @@ public class RMQRequest extends AbstractConnectorRequest<RMQEmptyResponse> {
     return getRequestParameter("messageId");
   }
 
+ public void setReplyTo(String ReplyTo) {
+    setRequestParameter("replyTo",ReplyTo);
+  }
+
+
   @Override
   protected boolean isRequestValid() {
 
@@ -84,17 +93,14 @@ public class RMQRequest extends AbstractConnectorRequest<RMQEmptyResponse> {
     }
 
     if(getExchange() == null ) {
-      LOGGER.warn("parameter 'exchange' was set to '' {}", this);
       setRequestParameter("exchange","");
     }
 
     if(getQueue() == null ) {
-      LOGGER.warn("parameter 'queue' was set to '' {}", this);
       setRequestParameter("queue","");
     }
 
     if(getRoutingKey() == null ) {
-      LOGGER.warn("parameter 'routingKey' was set to '' {}", this);
       setRequestParameter("routingKey","");
     }
 
