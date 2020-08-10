@@ -24,7 +24,7 @@ public class RMQConnector extends AbstractConnector<RMQRequest,RMQEmptyResponse>
   }
 
  @Override
-  public ConnectorResponse execute(RMQRequest request) {
+  public ConnectorResponse execute(RMQRequest request){
     try{
     	RMQInvocation invocation=new RMQInvocation(request,request, requestInterceptors);
 	    RMQResponse response=(RMQResponse)invocation.proceed();
@@ -35,7 +35,8 @@ public class RMQConnector extends AbstractConnector<RMQRequest,RMQEmptyResponse>
 
     }catch (Exception e) {
 	    LOGGER.error("RMQ exception: "+ e.getMessage());
-	    throw new RMQException("RMQ Connector execution error ",e);
+        e.printStackTrace();
+	    throw new RMQException("RMQ Connector execution error:  "+e.getMessage(),e);
     }
   }
 }

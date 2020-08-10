@@ -32,8 +32,6 @@ public class Send
     Channel channel = connection.createChannel();
     
     String message = "";
-//    channel.queueDeclare(QUEUE_NAME, true, false, false, null);
-
     BufferedReader in = null;
     try {
         in = new BufferedReader(new InputStreamReader(System.in));

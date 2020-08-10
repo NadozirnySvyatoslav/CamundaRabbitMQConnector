@@ -88,7 +88,6 @@ public class RMQRequest extends AbstractConnectorRequest<RMQEmptyResponse> {
     AMQP.BasicProperties.Builder prop_builder=new AMQP.BasicProperties.Builder();
 
     if(getUrl() == null ) {
-      LOGGER.warn("parameter 'url' was set to 'amqp:////' {}", this);
       setRequestParameter("url","amqp:////");
     }
 
@@ -120,7 +119,6 @@ public class RMQRequest extends AbstractConnectorRequest<RMQEmptyResponse> {
 	try{
     	    prop_builder.deliveryMode(Integer.parseInt(getDeliveryMode()));
 	}catch(Exception e){
-          LOGGER.warn("Error parameter 'deliveryMode' was set to '2' {}", this);
 	  setRequestParameter("deliveryMode",2);
 	}
     }
@@ -129,7 +127,6 @@ public class RMQRequest extends AbstractConnectorRequest<RMQEmptyResponse> {
 	try{
     	    prop_builder.priority(Integer.parseInt(getPriority()));
 	}catch(Exception e){
-          LOGGER.warn("Error parameter 'priority' was set to '1' {}", this);
 	  setRequestParameter("priority",1);
 	}
     }

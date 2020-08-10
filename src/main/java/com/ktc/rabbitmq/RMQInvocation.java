@@ -43,7 +43,7 @@ public class RMQInvocation extends AbstractRequestInvocation<RMQRequest> {
     Channel channel = connection.createChannel();
     String tmp_queue="camunda."+randomString(32);
 
-    if (request.getSync().matches("true") )  {
+    if ( request.getSync()!=null &&  request.getSync().matches("true") )  {
         AMQP.BasicProperties props=request.getProperties().builder().replyTo(tmp_queue).build();
         channel.queueDeclare(tmp_queue, false, false, false, null);
         channel.basicPublish(request.getExchange(), 
